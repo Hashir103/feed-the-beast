@@ -14,17 +14,17 @@ There are two players in the game– locally connected. The two players are resp
 
 ## 🤖 AI Design
 ### Monster FSM
-Idle
-Mopving towards food
-Sniffing food (deciding who to eat)
-Moving towards target
-Attacking target
-Going to sleep
+- Idle
+- Moving towards food
+- Sniffing food (deciding who to eat)
+- Moving towards target
+- Attacking target
+- Going to sleep
 
 ### Ingredient FSM
-Idle when spawned on a surface
-PickedUp set PlayerHandFree to False
-InMeal when added to a plate
+- Idle when spawned on a surface
+- PickedUp set PlayerHandFree to False
+- InMeal when added to a plate
 
 ## 🎬 Scripted Events
 There are a few scripted events in our game. The first one is the pet heading to sleep, indicating the time to cook food for it begins. Along with the pet sleeping, there will be multiple audio cues to indicate how much time is left (30 seconds, 10 seconds etc.) and the pet will wake up at the end of the timer. The end of timer would have another scripted event– the pet waking up and observing both players created meals before deciding its own action.
@@ -35,18 +35,27 @@ At the start of the timer, food will also drop for both users to collect for pre
 The game will take place in a dark and grimy kitchen or storage house. There will be at least 3 locations in the environment, which will be the two preparation areas for each player, and a room to store ingredients. The players will primarily be interacting with the ingredients within the environment to create their meals. Most visual assets for the game will be obtained from the Unity asset store. These assets will mainly be used to establish the game setting and props. We are also planning to use Blender to create our own models for some objects, like the beast. Any sound effects in the game will either be self-recorded or obtained from royalty-free websites.
 
 ## 🧪 Physics Scope
-
+- Colliders on players, ingredients, environmental props
+- Standard gravity physics on players and ingredients
+- Ability for ingredients to slide around if pushed while on the floor
+- Rigidbody on players, beast, and ingredients
 
 ## 🧠 FSM Scope
-
+- 
 
 ## 🧩 Systems and Mechanics
-
+- 
 
 ## 🎮 Controls (proposed)
-W A S D move  
-Mouse look  
-Space jump  
-E pick up/drop ingredient
+- W A S D (movement)
+- Mouse (look around)
+- Space (jump) 
+- E (pick up/drop ingredient)
 
-## 📂 Project Setup aligned to course topics
+## 📂 Project Setup
+- Unity
+- C# scripts for player, beast, and ingredient behaviour
+- Github repository for game code
+- JIRA board for task organization
+
+
