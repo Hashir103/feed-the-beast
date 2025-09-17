@@ -58,4 +58,9 @@ The game will take place in a dark and grimy kitchen or storage house. There wil
 - Github repository for game code
 - JIRA board for task organization
 
+## 💻 Group members
+- Hashir Sami – Developer, Focus on player interaction with environment
+- Jack Caldarone – Developer, Focus on main enemy/NPC
+- Kristina Arabov – Developer, Focus on visuals/modelling and physics
+
 
