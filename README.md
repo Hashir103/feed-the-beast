@@ -4,7 +4,7 @@
 Feed the Beast is a survival horror/PvP cooking game where two players will fight for their survival by cooking meals for a frightening monster
 
 ## 🕹️ Core Gameplay
-Assemble meals by finding ingredients hidden around the environment
+Two players will be assigned the role of chefs tasked with feeding a big scary beast. Each night they will prepare a meal for the monster, and the monster will choose which meal it likes better. Whoever makes the worst meal, the monster will take a bite out of them. After a player has been bit 3 times, they lose, and the other player wins. The core gameplay will consist of the two players assembling a meal with ingredients scattered around the environment. To assemble the meal, they will place the ingredients on a plate. Their movement will consist of holding ingredients and running/walking.
 
 ## 🎯 Game Type
 This will be a Player-vs-Player survival horror game. There will be cooking and pet simulation elements within the gameplay.
