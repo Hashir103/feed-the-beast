@@ -7,7 +7,7 @@ Feed the Beast is a survival horror/PvP cooking game where two players will figh
 Assemble meals by finding ingredients hidden around the environment
 
 ## 🎯 Game Type
-Survial horror, PvP, cooking, pet simulation
+This will be a Player-vs-Player survival horror game. There will be cooking and pet simulation elements within the gameplay.
 
 ## 👥 Player Setup
 There are two players in the game– locally connected. The two players are responsible for the same core gameplay mentioned above, however they will be working against each other for their own survival. Currently, the scope of our project is to be developed with the idea of two players playing split-screen on the same device. However, if it fits in our timeline, we’d like to include an online multiplayer option so that players can join from different devices and only have their own character’s point of view on their screen. Online connection would entail a user sharing a private code for their player two to join with. Each player will only be able to see a small portion of the overall map. Players will be able to navigate around the map using the WASD keys and perform actions like picking up, cooking, and serving.
@@ -31,8 +31,8 @@ There are a few scripted events in our game. The first one is the pet heading to
 
 At the start of the timer, food will also drop for both users to collect for preparation. This scripted event will determine randomly the quality of the ingredients given for the users to cook with. 
 
-## 🌍 Environment
-
+## 🌍 Environment and Assets
+The game will take place in a dark and grimy kitchen or storage house. There will be at least 3 locations in the environment, which will be the two preparation areas for each player, and a room to store ingredients. The players will primarily be interacting with the ingredients within the environment to create their meals. Most visual assets for the game will be obtained from the Unity asset store. These assets will mainly be used to establish the game setting and props. We are also planning to use Blender to create our own models for some objects, like the beast. Any sound effects in the game will either be self-recorded or obtained from royalty-free websites.
 
 ## 🧪 Physics Scope
 
