@@ -16,10 +16,13 @@ There are two players in the game– locally connected. The two players are resp
 ### Monster FSM
 - Idle
 - Moving towards food
-- Sniffing food (deciding who to eat)
+- Sniffing food (this is where decision making algorithm is run)
 - Moving towards target
 - Attacking target
 - Going to sleep
+
+### Monster FSM - Summary
+- Every round the pet (our AI enemy) will start out in the idle state. After one minute it will show up in the environment. It will then enter a moving state where it will use pathfinding to walk to the prepared meals. Once the destination is reached, it will enter another state where it appears to be smelling the prepared meals, but really it will be using a decision making algorithm to decide which of the meals it likes better. After this is decided, it will re-enter the moving state, where it will use pathfinding to walk to the player who made the worse meal. It will then enter an attack state and take a bite of that player. Finally, once the player has been bitten, the pet will enter the moving state for the last time, where it will simply leave the room, starting the next round. If the pet didn’t like either meal, it will choose the player to bite based on random chance.
 
 ### Ingredient FSM
 - Idle when spawned on a surface
@@ -41,10 +44,20 @@ The game will take place in a dark and grimy kitchen or storage house. There wil
 - Rigidbody on players, beast, and ingredients
 
 ## 🧠 FSM Scope
-- 
+- FSM with idle, moving, decision making, and attacking states for the pet
+- Pet will leave these states based on timers and events being triggered
+- Each ingredient will have an inHand flag to determine whether or not it is being held
+- When an ingredient is held it becomes parented to the player's hand
+- Players will have handEmpty flag that gets triggered when they interact with an ingredient
 
 ## 🧩 Systems and Mechanics
-- 
+- Ingredients will be scattered around the room at the start of the round
+- A timer will start at the beginning of the round, when it ends the pet will leave its idle state
+- Players will interact with ingredients to assemble a meal, each ingredient will either give points or subtract points from the meal (the players' score will be hidden to them)
+- The pet will run a decision making algorithm to decide which player it will attack (this will be based on whoever scored higher, but if neither players score high enough the pet will pick by random)
+- The camera will be controlled by a first person POV
+- The timer will include a beeping sound effect in intervals when the time is running out
+- Chomp sound effect will play when the pet bites a player
 
 ## 🎮 Controls (proposed)
 - W A S D (movement)
