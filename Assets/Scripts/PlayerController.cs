@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private float _verticalVelocity;
 
     public Transform CameraTransform;
+    public Vector3 CameraOffset = new Vector3(0f, 1.6f, 0f);
     public float LookSensitivity = 1f;
     public float MinPitch = -80f;
     public float MaxPitch = 80f;
