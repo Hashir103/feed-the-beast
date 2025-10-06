@@ -6871,6 +6871,16 @@ MonoBehaviour:
   RotationSpeed: 5
   JumpForce: 10
   Gravity: -30
+  CameraTransform: {fileID: 330585546}
+  CameraOffset: {x: 0, y: 1.6, z: 0}
+  LookSensitivity: 0.5
+  MinPitch: -80
+  MaxPitch: 80
+  LockCursor: 1
+  BodyRoot: {fileID: 0}
+  BodyRenderers: []
+  ExcludeRenderers: []
+  AutoCollectBodyRenderers: 1
 --- !u!143 &1460779340
 CharacterController:
   m_ObjectHideFlags: 0
