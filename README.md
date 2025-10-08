@@ -76,4 +76,13 @@ The game will take place in a dark and grimy kitchen or storage house. There wil
 - Jack Caldarone – Developer, Focus on main enemy/NPC
 - Kristina Arabov – Developer, Focus on visuals/modelling and physics
 
-
+## Assignment 2 - FSM
+![alt text](image1.png)
+![alt text](image2.png)
+- The monster will start out in the idle state, which serves as the base which all states transition to/from
+- From idle, the monster can transition to walking, eating, or attacking, all of which have their own distinct animations
+- After an in-game timer goes off, the isWalking variable will be set to true, which will cause the monster to transition to the walking state
+- Once it reaches the destination, isWalking will be set to false, and isEating will be set to true, meaning the monster will briefly re-enter the idle state before transitioning to the eating state
+- This will repeat for the second bowl, and then the monster will move to the player (while in the walking state)
+- Finally, the monster will briefly re-enter the idle state when isWalking is set to false, and will then enter the attacking state when isAttacking is set to true
+- An attacking animation will play, and then the monster will return to its original position
