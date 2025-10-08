@@ -6638,6 +6638,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   bowl1: {fileID: 389381788}
   bowl2: {fileID: 1081955669}
+  player: {fileID: 1460779344}
   startPosition: {fileID: 1887557188}
   animator: {fileID: 1736993640}
 --- !u!95 &1199624624
