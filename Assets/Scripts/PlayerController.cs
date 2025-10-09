@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     private CharacterController _characterController;
+    [Tooltip("When false the PlayerController will ignore input (useful for menus)")]
+    public bool AcceptInput = true;
     public float MovementSpeed = 10f;
     public float RotationSpeed = 5f;
     public float JumpForce = 10f;
@@ -98,6 +100,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (!AcceptInput) return;
         var mouse = Mouse.current;
         var keyboard = Keyboard.current;
 

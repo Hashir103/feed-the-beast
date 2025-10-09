@@ -21,10 +21,15 @@ public class InputHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector2 movementVector = _moveAction.ReadValue<Vector2>();
+        if (CharacterController == null) return;
+
+        // don't apply input if the player controller has disabled input
+        if (!CharacterController.AcceptInput) return;
+
+        Vector2 movementVector = _moveAction != null ? _moveAction.ReadValue<Vector2>() : Vector2.zero;
         CharacterController.Move(movementVector);
 
-        Vector2 lookVector = _lookAction.ReadValue<Vector2>();
+        Vector2 lookVector = _lookAction != null ? _lookAction.ReadValue<Vector2>() : Vector2.zero;
         CharacterController.Rotate(lookVector);
     }
 
