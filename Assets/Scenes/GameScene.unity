@@ -11902,11 +11902,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c4c9a95c0a8472449f01683715d8801, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  delayTime: 5
+  moveSpeed: 3
+  stoppingDistance: 0.2
   bowl1: {fileID: 389381788}
   bowl2: {fileID: 1081955669}
   player: {fileID: 0}
   startPosition: {fileID: 1887557188}
-  animator: {fileID: 1736993640}
 --- !u!195 &1199624627
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -11922,7 +11924,7 @@ NavMeshAgent:
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 0
+  m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
@@ -14416,11 +14418,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 503797902}
   m_SourcePrefab: {fileID: 100100000, guid: c21890caac874da4181fef610b3c7c8a, type: 3}
---- !u!95 &1736993640 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 1556312176, guid: af9f138ca1214ae41beb955d1406704e, type: 3}
-  m_PrefabInstance: {fileID: 1459405032}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1751441363
 PrefabInstance:
   m_ObjectHideFlags: 0
