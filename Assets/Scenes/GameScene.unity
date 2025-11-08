@@ -658,6 +658,11 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &53839265 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5312254207850949179, guid: 7a131f7863b98374d8ab4294a1ff5125, type: 3}
+  m_PrefabInstance: {fileID: 852923777}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &55257351 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8142394513516115255, guid: 08f647eaed404d54aa74457190d81aec, type: 3}
@@ -11907,7 +11912,7 @@ MonoBehaviour:
   stoppingDistance: 0.2
   bowl1: {fileID: 389381788}
   bowl2: {fileID: 1081955669}
-  player: {fileID: 0}
+  player: {fileID: 53839265}
   startPosition: {fileID: 1887557188}
 --- !u!195 &1199624627
 NavMeshAgent:
