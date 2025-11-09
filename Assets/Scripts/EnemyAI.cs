@@ -1,201 +1,82 @@
-// using UnityEngine;
-// using UnityEngine.AI;
-
-// public class EnemyAI : MonoBehaviour
-// {
-//     [Header("Behavior Timing")]
-//     [SerializeField] private float delayTime = 5f;
-
-//     [Header("Movement Settings")]
-//     [SerializeField] private float moveSpeed = 3f;
-//     [SerializeField] private float stoppingDistance = 0.2f;
-
-//     [Header("Targets")]
-//     public Transform bowl1;
-//     public Transform bowl2;
-//     public Transform player;
-//     public Transform startPosition;
-
-//     private Transform target;
-//     private bool canMove = false;
-
-//     private NavMeshAgent agent;
-//     private Animator animator;
-
-//     void Start()
-//     {
-//         animator = transform.Find("Creep_mesh").GetComponent<Animator>();
-//         agent = GetComponent<NavMeshAgent>();
-
-//         if (agent != null)
-//         {
-//             // Automatic NavMeshAgent movement handling
-//             agent.speed = moveSpeed;
-//             agent.angularSpeed = 720f;        // controls turn speed
-//             agent.acceleration = 16f;         // faster response
-//             agent.autoBraking = false;        // smooth corners
-//             agent.radius = 0.25f;             // reduce to avoid clipping walls
-//             agent.stoppingDistance = stoppingDistance;
-//             agent.updatePosition = true;
-//             agent.updateRotation = true;      // let Unity handle rotation
-//             agent.autoRepath = true;
-//         }
-
-//         Invoke(nameof(LeaveIdle), delayTime);
-//     }
-
-//     void LeaveIdle()
-//     {
-//         animator.SetBool("isWalking", true);
-//         canMove = true;
-//         target = bowl1;
-//         SetDestination();
-//     }
-
-//     void LeaveEat1()
-//     {
-//         animator.SetBool("isEating", false);
-//         animator.SetBool("isWalking", true);
-//         canMove = true;
-//         target = bowl2;
-//         SetDestination();
-//     }
-
-//     void LeaveEat2()
-//     {
-//         animator.SetBool("isEating", false);
-//         animator.SetBool("isWalking", true);
-//         canMove = true;
-//         target = player;
-//         SetDestination();
-//     }
-
-//     void LeaveAttack()
-//     {
-//         animator.SetBool("isAttacking", false);
-//         animator.SetBool("isWalking", true);
-//         canMove = true;
-//         target = startPosition;
-//         SetDestination();
-//     }
-
-//     void Update()
-//     {
-//         if (!canMove || target == null || agent == null)
-//             return;
-
-//         // If agent somehow stopped, resume it
-//         if (agent.isStopped)
-//             agent.isStopped = false;
-
-//         // Update the destination if needed
-//         if (agent.destination != target.position)
-//             SetDestination();
-
-//         // Check if arrived
-//         if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance + 0.05f)
-//         {
-//             HandleArrival();
-//         }
-
-//         // Update animation based on movement
-//         bool isMoving = agent.velocity.sqrMagnitude > 0.01f;
-//         animator.SetBool("isWalking", isMoving);
-//     }
-
-//     private void SetDestination()
-//     {
-//         if (agent == null || target == null) return;
-
-//         // Make sure target is on NavMesh
-//         NavMeshHit hit;
-//         if (NavMesh.SamplePosition(target.position, out hit, 2f, NavMesh.AllAreas))
-//         {
-//             agent.SetDestination(hit.position);
-//         }
-//         else
-//         {
-//             agent.SetDestination(target.position);
-//         }
-//     }
-
-//     private void HandleArrival()
-//     {
-//         if (target == bowl1)
-//         {
-//             canMove = false;
-//             animator.SetBool("isWalking", false);
-//             animator.SetBool("isEating", true);
-//             Invoke(nameof(LeaveEat1), delayTime);
-//         }
-//         else if (target == bowl2)
-//         {
-//             canMove = false;
-//             animator.SetBool("isWalking", false);
-//             animator.SetBool("isEating", true);
-//             Invoke(nameof(LeaveEat2), delayTime);
-//         }
-//         else if (target == player)
-//         {
-//             canMove = false;
-//             animator.SetBool("isWalking", false);
-//             animator.SetBool("isAttacking", true);
-//             Invoke(nameof(LeaveAttack), delayTime);
-//         }
-//         else if (target == startPosition)
-//         {
-//             canMove = false;
-//             animator.SetBool("isWalking", false);
-//             animator.SetBool("isEating", false);
-//             animator.SetBool("isAttacking", false);
-//             // Optionally loop again if desired
-//             Invoke(nameof(LeaveIdle), delayTime);
-//         }
-//     }
-// }
-
-
 using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    [Header("Behavior Timing")]
-    [SerializeField] private float delayTime = 5f;
-
     [Header("Movement Settings")]
-    [SerializeField] private float moveSpeed = 3f;
-    [SerializeField] private float stoppingDistance = 0.2f;
-
-    [Header("Targets")]
-    public Transform bowl1;
-    public Transform bowl2;
-    public Transform player;
-    public Transform startPosition;
-
-    private Transform target;
+    [SerializeField] private float moveSpeed = 7f;
+    [SerializeField] private float angularSpeed = 720f;
+    [SerializeField] private float stoppingDistance = 0.35f;
+    [SerializeField] private float rotationSpeed = 5f;
 
     private NavMeshAgent agent;
     private Animator animator;
+    private Transform lookTarget;
+    private float cachedSpeed;
 
     void Start()
     {
-        animator = transform.Find("Creep_mesh").GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
+        animator = transform.Find("Creep_mesh").GetComponent<Animator>();
 
         if (agent != null)
         {
-            // Automatic NavMeshAgent movement handling
             agent.speed = moveSpeed;
-            agent.angularSpeed = 720f;        // controls turn speed
-            agent.acceleration = 16f;         // faster response
-            agent.autoBraking = false;        // smooth corners
-            agent.radius = 0.25f;             // reduce to avoid clipping walls
+            agent.angularSpeed = angularSpeed;
+            agent.acceleration = 30f;
             agent.stoppingDistance = stoppingDistance;
+            agent.autoBraking = true;
+            agent.radius = 0.25f;
+            agent.updateRotation = true;
             agent.updatePosition = true;
-            agent.updateRotation = true;      // let Unity handle rotation
             agent.autoRepath = true;
         }
+
+        if (animator != null)
+            animator.applyRootMotion = false;
+
+        cachedSpeed = moveSpeed;
+    }
+
+    void Update()
+    {
+        if (agent != null && agent.enabled && agent.isOnNavMesh)
+        {
+            if (Mathf.Abs(agent.speed - cachedSpeed) > 0.01f)
+                agent.speed = cachedSpeed;
+
+            if (animator != null)
+            {
+                float normalizedSpeed = Mathf.Clamp01(agent.velocity.magnitude / cachedSpeed);
+                animator.SetFloat("SpeedMagnitude", normalizedSpeed);
+                animator.SetBool("isWalking", normalizedSpeed > 0.05f);
+            }
+        }
+
+        if (lookTarget != null)
+        {
+            Vector3 dir = lookTarget.position - transform.position;
+            dir.y = 0f;
+            if (dir.sqrMagnitude > 0.001f)
+            {
+                Quaternion targetRot = Quaternion.LookRotation(dir.normalized);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, rotationSpeed * Time.deltaTime);
+            }
+        }
+    }
+
+    public void SetTarget(Transform target)
+    {
+        lookTarget = target;
+    }
+
+    public void ClearTarget()
+    {
+        lookTarget = null;
+    }
+
+    public void BiteImpact()
+    {
+        Debug.Log("Monster chomped!");
     }
 }
-
