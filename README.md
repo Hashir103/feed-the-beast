@@ -88,3 +88,28 @@ The game will take place in a dark and grimy kitchen or storage house. There wil
 - An attacking animation will play, and then the monster will return to its original position
 
 ### [Gameplay Video](https://www.youtube.com/watch?v=95yaevE7lXE)
+
+
+# Assignment 3 - Pathfinding and Decision Making
+### Note on state transitions (Relevant for Assignment 3, whenever we say the monster enters/leaves a state, all these facts are implied)
+- The monster will be in each state for a total of 5 seconds, except for the walking state which takes a variable amount of time depending on pathfinding.
+- Whenever the enemy arrives at a bowl, it will leave the walking state and enter the eating state.
+- Whenever the enemy leaves a bowl, it wil leave the eating state and enter the walking state.
+- Whenever the enemy arrives at the players location, it will leave the walking state and enter the attacking state.
+- Whenever the enemy leaves the players location, it will leave the attacking state and enter the walking state.
+- Whenever the enemy arrives at the start position location, it will leave the walking state and enter the idle state.
+- Whenever the enemy leaves the start position, it will leave the idle state and enter the walking state.
+
+## Decision making 
+![alt text](image3.png)
+- We have implemented the above behavior tree to determine how the enemy ai acts.
+- After being in the idle position, it will navigate to the first bowl where it will make its first decision. If the bowl had food in it, it will leave the eating state and walk to the next bowl. Once it is there, it will eat from the second bowl but it will not check if that bowl is empty or not. It will then return to its original position, whether the second bowl was empty or not.
+- If the first bowl did not have food in it, it will still walk to and eat from the second bowl, however this time it will check if the second bowl is empty or not. If the second bowl had food, it will return to its starting position.
+- If the second bowl did not have food, the monster will navigate to the player and attack them. After it is done attacking, it will return to its original position.
+
+## Pathfinding
+- We have implemented a nav mesh in order to have more complex pathfinding for our enemy ai
+- The navmesh allows for more intricate steering. The monster will slow down as it turns in order to navigate corners or obstacles, and speed it up as it walks in a straight line towards its target.
+- As can be seen in the video, the monster will use the navmesh to chase down the player when it is trying to attack them, making it seem more calculating and intimidating.
+
+### [Pathfinding and Decision Making Demo](https://youtu.be/wCuLaDohHQ0)
