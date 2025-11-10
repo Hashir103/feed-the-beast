@@ -658,7 +658,7 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &53839265
+--- !u!114 &53839267
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -667,14 +667,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 53839260}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7d1ad0b896d3be43869b8938f58b1ec, type: 3}
+  m_Script: {fileID: 11500000, guid: e827c2e9647004f68ad30d8964a0a71d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerPickupDrop
   playerCameraTransform: {fileID: 330585546}
   objectGrabPointTransform: {fileID: 1828450429}
   pickupLayerMask:
     serializedVersion: 2
-    m_Bits: 63
+    m_Bits: 4294967295
 --- !u!4 &55257351 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8142394513516115255, guid: 08f647eaed404d54aa74457190d81aec, type: 3}
@@ -2498,11 +2498,6 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 3976062412673591142, guid: 65aeeaef3d6863a428686ba3b34e8c58, type: 3}
   m_PrefabInstance: {fileID: 161698151}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &389381788 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7350aa38472b0f447975fc278ed1e4fb, type: 3}
-  m_PrefabInstance: {fileID: 1751441363}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &394743887
 PrefabInstance:
@@ -10424,7 +10419,7 @@ PrefabInstance:
       addedObject: {fileID: 53839264}
     - targetCorrespondingSourceObject: {fileID: 413801501614924322, guid: 7a131f7863b98374d8ab4294a1ff5125, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 53839265}
+      addedObject: {fileID: 53839267}
   m_SourcePrefab: {fileID: 100100000, guid: 7a131f7863b98374d8ab4294a1ff5125, type: 3}
 --- !u!1001 &862546495
 PrefabInstance:
@@ -11323,11 +11318,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1868028560240669385, guid: 2f5b5d5c74133eb4da94c020922031a3, type: 3}
   m_PrefabInstance: {fileID: 538157717}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1081955669 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 080c695b9c7183841a2fd43eec311e54, type: 3}
-  m_PrefabInstance: {fileID: 1125315629}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1106228281
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11931,17 +11921,6 @@ MonoBehaviour:
   moveSpeed: 7
   angularSpeed: 720
   stoppingDistance: 0.5
-  eatDuration: 0
-  initialDelay: 0
-  bowl1Offset: 0.15
-  bowl2Offset: 0.25
-  startOffset: 0.3
-  stuckVelocityThreshold: 0.05
-  stuckTime: 1.5
-  sampleRadius: 2
-  bowl1: {fileID: 389381788}
-  bowl2: {fileID: 1081955669}
-  startPosition: {fileID: 1355165998}
 --- !u!195 &1199624627
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -16302,7 +16281,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1482963340}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b6ad1079361c674badb6a0f23ae4c6e, type: 3}
+  m_Script: {fileID: 11500000, guid: 6fa5b7ec0d64f47d7b5fe285abd50513, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectGrabbable
 --- !u!1 &2036967460
