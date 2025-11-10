@@ -7,7 +7,6 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float angularSpeed = 720f;
     [SerializeField] private float stoppingDistance = 0.35f;
-    [SerializeField] private float rotationSpeed = 5f;
 
     private NavMeshAgent agent;
     private Animator animator;
@@ -52,31 +51,5 @@ public class EnemyAI : MonoBehaviour
                 animator.SetBool("isWalking", normalizedSpeed > 0.05f);
             }
         }
-
-        if (lookTarget != null)
-        {
-            Vector3 dir = lookTarget.position - transform.position;
-            dir.y = 0f;
-            if (dir.sqrMagnitude > 0.001f)
-            {
-                Quaternion targetRot = Quaternion.LookRotation(dir.normalized);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, rotationSpeed * Time.deltaTime);
-            }
-        }
-    }
-
-    public void SetTarget(Transform target)
-    {
-        lookTarget = target;
-    }
-
-    public void ClearTarget()
-    {
-        lookTarget = null;
-    }
-
-    public void BiteImpact()
-    {
-        Debug.Log("Monster chomped!");
     }
 }
