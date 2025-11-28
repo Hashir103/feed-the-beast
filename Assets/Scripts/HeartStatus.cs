@@ -17,10 +17,10 @@ public class HealthHeart : MonoBehaviour
     {
         switch (status)
         {
-            case HeartStatus.empty:
+            case HeartStatus.Empty:
                 heartImage.sprite = empty;
                 break;
-            case HeartStatus.full:
+            case HeartStatus.Full:
                 heartImage.sprite = full;
                 break;
         }
@@ -30,6 +30,6 @@ public class HealthHeart : MonoBehaviour
 
 public enum HeartStatus
 {
-    empty = 0,
-    full = 1
+    Empty = 0,
+    Full = 1
 }
