@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Unity.Netcode;
 
-public class PlayerPickupDrop : MonoBehaviour
+public class PlayerPickupDrop : NetworkBehaviour
 {
     [SerializeField] private Transform playerCameraTransform;
     [SerializeField] private Transform objectGrabPointTransform;
@@ -12,26 +13,39 @@ public class PlayerPickupDrop : MonoBehaviour
     {
         if (Keyboard.current[Key.E].isPressed)
         {
-            // If not holding anything
+        // if (!IsOwner) return;    // Only the local player handles input
+
+        if (Keyboard.current[Key.E].wasPressedThisFrame)
+        {
+            // If not holding anything → try pick up
             if (objectGrabbable == null)
             {
-                float pickupDistance = 2f;
-                if (Physics.Raycast(playerCameraTransform.position, playerCameraTransform.forward, out RaycastHit raycastHit, pickupDistance, pickupLayerMask))
-                {
-                    if (raycastHit.transform.TryGetComponent(out objectGrabbable))
-                    {
-                        objectGrabbable.Grab(objectGrabPointTransform);
-                    }
-                }
+                TryPickup();
             }
-            // If holding an object
-            else
+            else // If holding → drop
             {
-                objectGrabbable.Drop();
+                objectGrabbable.TryDrop();
                 objectGrabbable = null;
             }
+        }
             
         }
     }
-    
+
+    private void TryPickup()
+    {
+        float pickupDistance = 2f;
+
+        if (Physics.Raycast(playerCameraTransform.position, playerCameraTransform.forward,
+            out RaycastHit hit, pickupDistance, pickupLayerMask))
+        {
+            if (hit.transform.TryGetComponent(out ObjectGrabbable grabbable))
+            {
+                objectGrabbable = grabbable;
+
+                // Ask object to give us ownership and follow our grab point
+                objectGrabbable.TryGrab(objectGrabPointTransform);
+            }
+        }
+    }
 }
