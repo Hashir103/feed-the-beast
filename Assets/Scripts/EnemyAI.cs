@@ -8,6 +8,11 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float angularSpeed = 720f;
     [SerializeField] private float stoppingDistance = 0.35f;
 
+    [Header("Attack Settings")]
+    [SerializeField] private PlayerHealth playerHealth; // drag player here
+    [SerializeField] private int attackDamage = 1;
+    [SerializeField] private float attackRange = 1.5f;
+
     private NavMeshAgent agent;
     private Animator animator;
     private Transform lookTarget;
@@ -50,6 +55,16 @@ public class EnemyAI : MonoBehaviour
                 animator.SetFloat("SpeedMagnitude", normalizedSpeed);
                 animator.SetBool("isWalking", normalizedSpeed > 0.05f);
             }
+        }
+    }
+    public void AttackHit()
+    {
+        if (playerHealth == null) return;
+
+        float dist = Vector3.Distance(transform.position, playerHealth.transform.position);
+        if (dist <= attackRange)
+        {
+            playerHealth.TakeDamage(attackDamage);
         }
     }
 }

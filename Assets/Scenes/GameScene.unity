@@ -11895,6 +11895,9 @@ MonoBehaviour:
   moveSpeed: 7
   angularSpeed: 720
   stoppingDistance: 0.5
+  playerHealth: {fileID: 9222068460759794635}
+  attackDamage: 1
+  attackRange: 1.5
 --- !u!195 &1199624627
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -17264,6 +17267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   currentHealth: 3
   maxHealth: 3
+  heartBar: {fileID: 733184454}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
