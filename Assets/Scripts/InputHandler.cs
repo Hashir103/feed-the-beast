@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Unity.Netcode;
 
-public class InputHandler : NetworkBehaviour
+public class InputHandler : MonoBehaviour
 {
     public PlayerController CharacterController;
     private InputAction _moveAction, _lookAction, _jumpAction;
@@ -22,7 +21,6 @@ public class InputHandler : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if (!IsOwner) return;
         if (CharacterController == null) return;
 
         // don't apply input if the player controller has disabled input
@@ -37,7 +35,6 @@ public class InputHandler : NetworkBehaviour
 
     private void OnJumpPerformed(InputAction.CallbackContext context)
     {
-        // if (!IsOwner) return;
         CharacterController.Jump();
     }
 }
