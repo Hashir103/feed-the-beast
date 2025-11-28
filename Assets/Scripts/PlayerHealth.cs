@@ -7,12 +7,19 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField] private HealthHeartBar heartBar;
 
+    private void Awake()
+    {
+        if (heartBar == null)
+            heartBar = FindObjectOfType<HealthHeartBar>();
+    }
+
     void Start()
     {
         currentHealth = maxHealth;
 
         if (heartBar != null)
         {
+            heartBar.playerHealth = this;
             heartBar.DrawHearts();
         }
     }
@@ -34,20 +41,8 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void Heal(int amount)
-    {
-        int oldHealth = currentHealth;
-
-        currentHealth = Mathf.Min(maxHealth, currentHealth + amount);
-
-        if (heartBar != null && currentHealth != oldHealth)
-        {
-            heartBar.DrawHearts();
-        }
-    }
-
     private void Die()
     {
-        // TODO: handle death (respawn, game over, etc.)
+        // handle death
     }
 }
