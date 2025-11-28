@@ -11993,7 +11993,7 @@ MonoBehaviour:
           m_Value0: 16237483443619750374
           m_Value1: 17357773293625662473
         Name: Animator
-        m_Value: {fileID: 1199624634}
+        m_Value: {fileID: 1309230739}
     - rid: 7915298641457710040
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -12102,28 +12102,6 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
---- !u!95 &1199624634
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1199624617}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 10ca5429fe06cdf4ebe04c325e2e72ae, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1199624635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12138,7 +12116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.NetworkAnimator
   ShowTopMostFoldoutHeaderGroup: 1
   TransitionStateInfoList: []
-  m_Animator: {fileID: 1199624634}
+  m_Animator: {fileID: 1309230739}
 --- !u!4 &1200355785 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6893060778985535938, guid: 5845fca4d1cb7634199f5b98cba3efba, type: 3}
@@ -12759,6 +12737,11 @@ PrefabInstance:
       addedObject: {fileID: 407986497}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65aeeaef3d6863a428686ba3b34e8c58, type: 3}
+--- !u!95 &1309230739 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1556312176, guid: af9f138ca1214ae41beb955d1406704e, type: 3}
+  m_PrefabInstance: {fileID: 1459405032}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1322613674 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1977132576251726435, guid: cdbb65eaed9a2224cafb7d2a8e2d864f, type: 3}
@@ -14223,9 +14206,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2547632407910942000, guid: af9f138ca1214ae41beb955d1406704e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1199624632}
-    - targetCorrespondingSourceObject: {fileID: 2547632407910942000, guid: af9f138ca1214ae41beb955d1406704e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1199624634}
     - targetCorrespondingSourceObject: {fileID: 2547632407910942000, guid: af9f138ca1214ae41beb955d1406704e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1199624635}
