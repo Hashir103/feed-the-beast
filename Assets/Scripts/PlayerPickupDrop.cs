@@ -9,11 +9,21 @@ public class PlayerPickupDrop : NetworkBehaviour
     [SerializeField] private LayerMask pickupLayerMask;
 
     private ObjectGrabbable objectGrabbable;
+
+    private PlayerInteraction playerInteraction;
+
+    private void Awake()
+    {
+        playerInteraction = GetComponent<PlayerInteraction>();
+        if (playerInteraction == null)
+        {
+            Debug.LogWarning("PlayerInteraction component not found on player!");
+        }
+    }
+
     private void Update()
     {
-        if (Keyboard.current[Key.E].isPressed)
-        {
-        // if (!IsOwner) return;    // Only the local player handles input
+        if (!IsOwner) return; // Only the local player handles input
 
         if (Keyboard.current[Key.E].wasPressedThisFrame)
         {
@@ -26,9 +36,13 @@ public class PlayerPickupDrop : NetworkBehaviour
             {
                 objectGrabbable.TryDrop();
                 objectGrabbable = null;
+
+                // Update PlayerInteraction
+                if (playerInteraction != null)
+                {
+                    playerInteraction.heldItem = null;
+                }
             }
-        }
-            
         }
     }
 
@@ -45,7 +59,14 @@ public class PlayerPickupDrop : NetworkBehaviour
 
                 // Ask object to give us ownership and follow our grab point
                 objectGrabbable.TryGrab(objectGrabPointTransform);
+
+                // Update PlayerInteraction
+                if (playerInteraction != null)
+                {
+                    playerInteraction.heldItem = grabbable.gameObject;
+                }
             }
         }
     }
 }
+
