@@ -8,12 +8,6 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float angularSpeed = 720f;
     [SerializeField] private float stoppingDistance = 0.35f;
 
-    [Header("Attack Settings")]
-    [SerializeField] private PlayerHealth playerHealth; // drag Player here
-    [SerializeField] private int attackDamage = 1;
-    [SerializeField] private float attackRange = 1.5f;
-    [SerializeField] private float attackCooldown = 1f; // seconds between hits
-
     private NavMeshAgent agent;
     private Animator animator;
     private float cachedSpeed;
@@ -64,41 +58,15 @@ public class EnemyAI : MonoBehaviour
         HandleAutoAttack();
     }
 
-    // Automatically attack when the animator says we are attacking
     private void HandleAutoAttack()
     {
-        if (animator == null || playerHealth == null) return;
+        if (animator == null) return;
 
         bool isAttacking = animator.GetBool("isAttacking");
 
         if (isAttacking)
         {
-            Debug.Log($"EnemyAI {name} is damaging {playerHealth.gameObject.name}");
-            if (Time.time - lastAttackTime >= attackCooldown)
-            {
-                float dist = Vector3.Distance(
-                    transform.position,
-                    playerHealth.transform.position
-                );
-
-                if (dist <= attackRange)
-                {
-                    playerHealth.TakeDamage(attackDamage);
-                    lastAttackTime = Time.time;
-                }
-            }
-        }
-    }
-
-    // Optional: Called if you ever want to hit manually (animation events, etc.)
-    public void AttackHit()
-    {
-        if (playerHealth == null) return;
-
-        float dist = Vector3.Distance(transform.position, playerHealth.transform.position);
-        if (dist <= attackRange)
-        {
-            playerHealth.TakeDamage(attackDamage);
+            Debug.Log($"To implement, EnemyAI kills a player");
         }
     }
 }
