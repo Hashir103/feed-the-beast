@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections.Generic;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -8,6 +9,19 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float angularSpeed = 720f;
     [SerializeField] private float stoppingDistance = 0.35f;
 
+    [Header("Food Preference Settings")]
+    [SerializeField] private List<string> masterFoodList = new List<string>()
+    {
+        "Food_Burger",
+        "Food_Cooked Rice",
+        "Food_Cooked Steak",
+        "Food_French Fries",
+        "Food_Pizza", 
+        "Food_Salad"
+    };
+
+    public List<string> randomizedFoodPreferences;
+
     private NavMeshAgent agent;
     private Animator animator;
     private Transform lookTarget;
@@ -15,6 +29,7 @@ public class EnemyAI : MonoBehaviour
 
     void Start()
     {
+        // Movement setup
         agent = GetComponent<NavMeshAgent>();
         animator = transform.Find("Creep_mesh").GetComponent<Animator>();
 
@@ -30,11 +45,17 @@ public class EnemyAI : MonoBehaviour
             agent.updatePosition = true;
             agent.autoRepath = true;
         }
-
         if (animator != null)
             animator.applyRootMotion = false;
 
         cachedSpeed = moveSpeed;
+
+        // Generate randomized list
+        randomizedFoodPreferences = GenerateRandomFoodList(masterFoodList);
+
+        Debug.Log("Randomized food preferences:");
+        foreach (var f in randomizedFoodPreferences)
+            Debug.Log(f);
     }
 
     void Update()
@@ -51,5 +72,19 @@ public class EnemyAI : MonoBehaviour
                 animator.SetBool("isWalking", normalizedSpeed > 0.05f);
             }
         }
+    }
+
+    private List<string> GenerateRandomFoodList(List<string> source)
+    {
+        List<string> temp = new List<string>(source);
+
+        for (int i = 0; i < temp.Count; i++)
+        {
+            int rand = Random.Range(i, temp.Count);
+            string swap = temp[i];
+            temp[i] = temp[rand];
+            temp[rand] = swap;
+        }
+        return temp;
     }
 }

@@ -17839,6 +17839,30 @@ PrefabInstance:
       propertyPath: managedReferences[7915298641457710041].m_Value
       value: 
       objectReference: {fileID: 1444525609}
+    - target: {fileID: 6148282144092568809, guid: 933e30c2f38c4574f9f275e48400c5ab, type: 3}
+      propertyPath: masterFoodList.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148282144092568809, guid: 933e30c2f38c4574f9f275e48400c5ab, type: 3}
+      propertyPath: 'masterFoodList.Array.data[1]'
+      value: Food_Cooked Rice
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148282144092568809, guid: 933e30c2f38c4574f9f275e48400c5ab, type: 3}
+      propertyPath: 'masterFoodList.Array.data[2]'
+      value: Food_Cooked Steak
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148282144092568809, guid: 933e30c2f38c4574f9f275e48400c5ab, type: 3}
+      propertyPath: 'masterFoodList.Array.data[3]'
+      value: Food_French Fries
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148282144092568809, guid: 933e30c2f38c4574f9f275e48400c5ab, type: 3}
+      propertyPath: 'masterFoodList.Array.data[4]'
+      value: Food_Pizza
+      objectReference: {fileID: 0}
+    - target: {fileID: 6148282144092568809, guid: 933e30c2f38c4574f9f275e48400c5ab, type: 3}
+      propertyPath: 'masterFoodList.Array.data[5]'
+      value: Food_Salad
+      objectReference: {fileID: 0}
     - target: {fileID: 7030834548860019863, guid: 933e30c2f38c4574f9f275e48400c5ab, type: 3}
       propertyPath: m_LocalPosition.x
       value: 60.45
