@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 8729212192828762674}
   - component: {fileID: 1220607206240265784}
   - component: {fileID: 2370055374580436570}
-  - component: {fileID: 5188767820580602249}
   - component: {fileID: 7984036487375147263}
   - component: {fileID: 1638731219070568715}
   - component: {fileID: 772803181921428198}
@@ -184,21 +183,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5188767820580602249
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5149593672618984021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cccaa56bab81f34eac47c7941c87cf5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  bowl1: {fileID: 0}
-  bowl2: {fileID: 0}
-  agent: {fileID: 0}
 --- !u!114 &7984036487375147263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,6 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b5fbed8b977dd4abb93ccc35b48914, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FoodItem
+  ShowTopMostFoldoutHeaderGroup: 1
   foodType: 5
   preparedFood: {fileID: 8866802955899163981, guid: e82a1477d2e3b7a44b661e726e6017b6, type: 3}
   preparationTime: 2

@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 599872674
+  GlobalObjectIdHash: 703979448
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -274,6 +274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b5fbed8b977dd4abb93ccc35b48914, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FoodItem
+  ShowTopMostFoldoutHeaderGroup: 1
   foodType: 1
   preparedFood: {fileID: 6144155658186244061, guid: 2b7956a0df68d0044a796667c016aa01, type: 3}
   preparationTime: 2

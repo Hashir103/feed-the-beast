@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 1463168801003581172}
   - component: {fileID: 6538160270130744487}
   - component: {fileID: 7232377226713015733}
-  - component: {fileID: 8972407939559621616}
   - component: {fileID: -3787679511818540714}
+  - component: {fileID: 8972407939559621616}
   - component: {fileID: -6536885202341309407}
   - component: {fileID: 8731121545712755919}
   - component: {fileID: -3940148504142037805}
@@ -118,21 +118,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -9063445836887604998, guid: f7a36aafea962f840b77c29aef6e7f42, type: 3}
---- !u!114 &8972407939559621616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2320493399342069760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18b5fbed8b977dd4abb93ccc35b48914, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FoodItem
-  foodType: 6
-  preparedFood: {fileID: 0}
-  preparationTime: 2
 --- !u!114 &-3787679511818540714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,6 +143,22 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!114 &8972407939559621616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2320493399342069760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b5fbed8b977dd4abb93ccc35b48914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FoodItem
+  ShowTopMostFoldoutHeaderGroup: 1
+  foodType: 6
+  preparedFood: {fileID: 0}
+  preparationTime: 2
 --- !u!114 &-6536885202341309407
 MonoBehaviour:
   m_ObjectHideFlags: 0
