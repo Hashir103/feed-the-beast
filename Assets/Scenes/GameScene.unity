@@ -299,6 +299,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9184233}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &12289204 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6207913024839726127, guid: 5b64bcaaa6de77345bb5f15d719356d7, type: 3}
+  m_PrefabInstance: {fileID: 641510514}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &34984099
 GameObject:
   m_ObjectHideFlags: 0
@@ -1370,6 +1375,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1237826456}
     m_Modifications:
+    - target: {fileID: 3651966197742019746, guid: 65aeeaef3d6863a428686ba3b34e8c58, type: 3}
+      propertyPath: m_Size.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3651966197742019746, guid: 65aeeaef3d6863a428686ba3b34e8c58, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3976062412673591142, guid: 65aeeaef3d6863a428686ba3b34e8c58, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.3575612
@@ -1423,7 +1436,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3976062412673591142, guid: 65aeeaef3d6863a428686ba3b34e8c58, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2114047853}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4352200305128078812, guid: 65aeeaef3d6863a428686ba3b34e8c58, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1889903982}
   m_SourcePrefab: {fileID: 100100000, guid: 65aeeaef3d6863a428686ba3b34e8c58, type: 3}
 --- !u!4 &164570101 stripped
 Transform:
@@ -2745,6 +2761,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7497228276271424348, guid: 30b514f0793b09641a844b6a4210870c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 294090302}
+    - targetCorrespondingSourceObject: {fileID: 7497228276271424348, guid: 30b514f0793b09641a844b6a4210870c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 294090308}
   m_SourcePrefab: {fileID: 100100000, guid: 30b514f0793b09641a844b6a4210870c, type: 3}
 --- !u!4 &294090300 stripped
 Transform:
@@ -2899,6 +2918,19 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!114 &294090308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294090301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b5fbed8b977dd4abb93ccc35b48914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FoodItem
+  foodType: 1
 --- !u!1001 &307287480
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3600,6 +3632,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3976062412673591142, guid: 65aeeaef3d6863a428686ba3b34e8c58, type: 3}
   m_PrefabInstance: {fileID: 161698151}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &387381413 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1837606970516627595, guid: 26963c43f9843f14a8567afb8520a54e, type: 3}
+  m_PrefabInstance: {fileID: 491432547}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &417520687
 GameObject:
   m_ObjectHideFlags: 0
@@ -3939,7 +3976,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1354366745629735473, guid: 26963c43f9843f14a8567afb8520a54e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.06304932
+      value: -0.741
       objectReference: {fileID: 0}
     - target: {fileID: 1354366745629735473, guid: 26963c43f9843f14a8567afb8520a54e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3981,10 +4018,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prop_Oven_01
       objectReference: {fileID: 0}
+    - target: {fileID: 9066027501318632068, guid: 26963c43f9843f14a8567afb8520a54e, type: 3}
+      propertyPath: m_Size.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9066027501318632068, guid: 26963c43f9843f14a8567afb8520a54e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1837606970516627595, guid: 26963c43f9843f14a8567afb8520a54e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1269700787}
   m_SourcePrefab: {fileID: 100100000, guid: 26963c43f9843f14a8567afb8520a54e, type: 3}
 --- !u!1 &503797901 stripped
 GameObject:
@@ -9904,6 +9952,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1237826456}
     m_Modifications:
+    - target: {fileID: 3506973350550714055, guid: 5b64bcaaa6de77345bb5f15d719356d7, type: 3}
+      propertyPath: m_Size.z
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3506973350550714055, guid: 5b64bcaaa6de77345bb5f15d719356d7, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6207913024839726127, guid: 5b64bcaaa6de77345bb5f15d719356d7, type: 3}
       propertyPath: m_Name
       value: Prop_KitchenTable_04
@@ -9963,7 +10019,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6732072948756639381, guid: 5b64bcaaa6de77345bb5f15d719356d7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1076987791}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6207913024839726127, guid: 5b64bcaaa6de77345bb5f15d719356d7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1150108158}
   m_SourcePrefab: {fileID: 100100000, guid: 5b64bcaaa6de77345bb5f15d719356d7, type: 3}
 --- !u!1001 &641637902
 PrefabInstance:
@@ -10068,6 +10127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CookingAppliance
   promptText: Press 'C' to prepare
+  acceptableFoods: 04000000
 --- !u!1 &669487408
 GameObject:
   m_ObjectHideFlags: 0
@@ -11831,7 +11891,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4192967270436757477, guid: 5266988b81c6ff44d833c591e20cd635, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.06765747
+      value: -0.73638916
       objectReference: {fileID: 0}
     - target: {fileID: 4192967270436757477, guid: 5266988b81c6ff44d833c591e20cd635, type: 3}
       propertyPath: m_LocalPosition.y
@@ -12712,6 +12772,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4492821927860754639, guid: e65e0f5a23047e147be6dc32db77c4f1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 992603313}
+    - targetCorrespondingSourceObject: {fileID: 4492821927860754639, guid: e65e0f5a23047e147be6dc32db77c4f1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 992603319}
   m_SourcePrefab: {fileID: 100100000, guid: e65e0f5a23047e147be6dc32db77c4f1, type: 3}
 --- !u!4 &992603311 stripped
 Transform:
@@ -12866,6 +12929,19 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!114 &992603319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 992603312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b5fbed8b977dd4abb93ccc35b48914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FoodItem
+  foodType: 5
 --- !u!1001 &996509498
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13706,6 +13782,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6732072948756639381, guid: 5b64bcaaa6de77345bb5f15d719356d7, type: 3}
   m_PrefabInstance: {fileID: 641510514}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1150108158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 12289204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9abd28b905601884980cedaca5102bc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CookingAppliance
+  promptText: Press 'C' to prepare
+  acceptableFoods: 0100000005000000
 --- !u!1 &1162311215
 GameObject:
   m_ObjectHideFlags: 0
@@ -14317,6 +14407,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5214559279995241855, guid: 83aad64f3f078194b97e33a1d49fb2b5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1210278478}
+    - targetCorrespondingSourceObject: {fileID: 5214559279995241855, guid: 83aad64f3f078194b97e33a1d49fb2b5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1210278484}
   m_SourcePrefab: {fileID: 100100000, guid: 83aad64f3f078194b97e33a1d49fb2b5, type: 3}
 --- !u!4 &1210278476 stripped
 Transform:
@@ -14471,6 +14564,19 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!114 &1210278484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1210278477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b5fbed8b977dd4abb93ccc35b48914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FoodItem
+  foodType: 0
 --- !u!4 &1211241853 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8301969671247916575, guid: 3a91f2e419e4058488ed8b7621e9abdc, type: 3}
@@ -14959,6 +15065,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1354366745629735473, guid: 26963c43f9843f14a8567afb8520a54e, type: 3}
   m_PrefabInstance: {fileID: 491432547}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1269700787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387381413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9abd28b905601884980cedaca5102bc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CookingAppliance
+  promptText: Press 'C' to prepare
+  acceptableFoods: 03000000
 --- !u!4 &1287800304 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1228675350111965567, guid: 7af19dfcf0498ba43bb7bdf35840880c, type: 3}
@@ -15439,6 +15559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18b5fbed8b977dd4abb93ccc35b48914, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FoodItem
+  foodType: 4
 --- !u!1001 &1369844201
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15533,6 +15654,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6452987395473004570, guid: ddc590ae56d02484faba95939304dc79, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1369844204}
+    - targetCorrespondingSourceObject: {fileID: 6452987395473004570, guid: ddc590ae56d02484faba95939304dc79, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1369844210}
   m_SourcePrefab: {fileID: 100100000, guid: ddc590ae56d02484faba95939304dc79, type: 3}
 --- !u!4 &1369844202 stripped
 Transform:
@@ -15687,6 +15811,19 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!114 &1369844210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369844203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b5fbed8b977dd4abb93ccc35b48914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FoodItem
+  foodType: 2
 --- !u!1001 &1372372175
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19018,6 +19155,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1977132576251726435, guid: cdbb65eaed9a2224cafb7d2a8e2d864f, type: 3}
   m_PrefabInstance: {fileID: 833474197}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1889903981 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4352200305128078812, guid: 65aeeaef3d6863a428686ba3b34e8c58, type: 3}
+  m_PrefabInstance: {fileID: 161698151}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1889903982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889903981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9abd28b905601884980cedaca5102bc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CookingAppliance
+  promptText: Press 'C' to prepare
+  acceptableFoods: 0000000002000000
 --- !u!1 &1906170244
 GameObject:
   m_ObjectHideFlags: 0
@@ -20563,6 +20719,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8069843110559502998, guid: 2ba561e817e6b8a4e92c134cb584e999, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2085561143}
+    - targetCorrespondingSourceObject: {fileID: 8069843110559502998, guid: 2ba561e817e6b8a4e92c134cb584e999, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2085561149}
   m_SourcePrefab: {fileID: 100100000, guid: 2ba561e817e6b8a4e92c134cb584e999, type: 3}
 --- !u!4 &2085561141 stripped
 Transform:
@@ -20717,6 +20876,19 @@ MonoBehaviour:
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!114 &2085561149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085561142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b5fbed8b977dd4abb93ccc35b48914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FoodItem
+  foodType: 3
 --- !u!1 &2087675414
 GameObject:
   m_ObjectHideFlags: 0

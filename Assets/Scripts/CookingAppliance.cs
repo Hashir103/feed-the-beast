@@ -6,11 +6,12 @@ public class CookingAppliance : MonoBehaviour
     private PlayerInteraction player;
 
     [SerializeField] private string promptText = "Press 'C' to prepare";
+    public FoodType[] acceptableFoods;
 
     private void OnTriggerEnter(Collider other)
     {
         player = other.GetComponent<PlayerInteraction>();
-        if (player != null)
+        if (player != null && CanUseAppliance(player.heldFoodType))
         {
             playerInRange = true;
             UpdatePrompt();
@@ -39,5 +40,17 @@ public class CookingAppliance : MonoBehaviour
 
         Debug.Log("player is: " + player);
         Debug.Log("promptUI is: " + player?.promptUI);
+    }
+
+    public bool CanUseAppliance(FoodType? held)
+    {
+        if (held == null) return false;
+
+        foreach (var food in acceptableFoods)
+        {
+            if (food == held)
+                return true;
+        }
+        return false;
     }
 }

@@ -11,6 +11,7 @@ public class PlayerPickupDrop : NetworkBehaviour
     private ObjectGrabbable objectGrabbable;
 
     private PlayerInteraction playerInteraction;
+    
 
     private void Awake()
     {
@@ -41,6 +42,7 @@ public class PlayerPickupDrop : NetworkBehaviour
                 if (playerInteraction != null)
                 {
                     playerInteraction.heldItem = null;
+                    playerInteraction.heldFoodType = null;
                 }
             }
         }
@@ -64,6 +66,9 @@ public class PlayerPickupDrop : NetworkBehaviour
                 if (playerInteraction != null)
                 {
                     playerInteraction.heldItem = grabbable.gameObject;
+
+                    FoodItem food = grabbable.GetComponent<FoodItem>();
+                    playerInteraction.heldFoodType = food != null ? food.foodType : (FoodType?)null;
                 }
             }
         }

@@ -1,16 +1,17 @@
 using UnityEngine;
 
+
+public enum FoodType
+{
+    GroundBeef,
+    Rice,
+    Meat,
+    Bread,
+    Potato,
+    Lettuce
+}
+
 public class FoodItem : MonoBehaviour, Preparable
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public FoodType foodType;
 }

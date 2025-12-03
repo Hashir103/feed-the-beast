@@ -5,6 +5,7 @@ public class PlayerInteraction : MonoBehaviour
 {
     public GameObject heldItem;
     public TextMeshProUGUI promptUI;
+    public FoodType? heldFoodType = null;
 
     private void FindPromptUI()
     {
