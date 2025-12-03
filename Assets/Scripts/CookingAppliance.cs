@@ -2,15 +2,17 @@ using UnityEngine;
 
 public class CookingAppliance : MonoBehaviour
 {
-    private bool playerInRange = false;
-    private PlayerInteraction player;
-
-    [SerializeField] private string promptText = "Press 'C' to prepare";
     public FoodType[] acceptableFoods;
 
+    private bool playerInRange = false;
+    private PlayerPickupDrop player;
+    [SerializeField] private string promptText = "Press 'C' to prepare";
+    
+
+    // Upon entering the appliance collider
     private void OnTriggerEnter(Collider other)
     {
-        player = other.GetComponent<PlayerInteraction>();
+        player = other.GetComponent<PlayerPickupDrop>();
         if (player != null && CanUseAppliance(player.heldFoodType))
         {
             playerInRange = true;
@@ -18,30 +20,28 @@ public class CookingAppliance : MonoBehaviour
         }
     }
 
+    // Upon exiting the appliance collider
     private void OnTriggerExit(Collider other)
     {
-        if (player != null && other.GetComponent<PlayerInteraction>() == player)
+        if (player != null && other.GetComponent<PlayerPickupDrop>() == player)
         {
             playerInRange = false;
-            player.HidePrompt();
             player = null;
+            UIManager.Instance.HidePrompt();
         }
     }
 
+    // Show or hide prompt to prepare
     private void UpdatePrompt()
     {
         if (player == null) return;
         if (playerInRange && player.IsHoldingPreparableItem())
         {
-            player.ShowPrompt(promptText);
-            Debug.Log(promptText);
+            UIManager.Instance.ShowPrompt(promptText);
         }
-
-
-        Debug.Log("player is: " + player);
-        Debug.Log("promptUI is: " + player?.promptUI);
     }
 
+    // Check if held food is valid for the appliance
     public bool CanUseAppliance(FoodType? held)
     {
         if (held == null) return false;

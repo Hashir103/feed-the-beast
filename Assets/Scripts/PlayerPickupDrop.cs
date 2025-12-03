@@ -10,17 +10,9 @@ public class PlayerPickupDrop : NetworkBehaviour
 
     private ObjectGrabbable objectGrabbable;
 
-    private PlayerInteraction playerInteraction;
+    public FoodType? heldFoodType = null;
+    public GameObject heldItem;
     
-
-    private void Awake()
-    {
-        playerInteraction = GetComponent<PlayerInteraction>();
-        if (playerInteraction == null)
-        {
-            Debug.LogWarning("PlayerInteraction component not found on player!");
-        }
-    }
 
     private void Update()
     {
@@ -38,12 +30,8 @@ public class PlayerPickupDrop : NetworkBehaviour
                 objectGrabbable.TryDrop();
                 objectGrabbable = null;
 
-                // Update PlayerInteraction
-                if (playerInteraction != null)
-                {
-                    playerInteraction.heldItem = null;
-                    playerInteraction.heldFoodType = null;
-                }
+                heldItem = null;
+                heldFoodType = null;
             }
         }
     }
@@ -62,16 +50,19 @@ public class PlayerPickupDrop : NetworkBehaviour
                 // Ask object to give us ownership and follow our grab point
                 objectGrabbable.TryGrab(objectGrabPointTransform);
 
-                // Update PlayerInteraction
-                if (playerInteraction != null)
-                {
-                    playerInteraction.heldItem = grabbable.gameObject;
+                heldItem = grabbable.gameObject;
 
-                    FoodItem food = grabbable.GetComponent<FoodItem>();
-                    playerInteraction.heldFoodType = food != null ? food.foodType : (FoodType?)null;
-                }
+                FoodItem food = grabbable.GetComponent<FoodItem>();
+                heldFoodType = food != null ? food.foodType : (FoodType?)null;
             }
         }
+    }
+
+    public bool IsHoldingPreparableItem()
+    {
+        if (heldItem.GetComponent<Preparable>() != null) return true;
+
+        return false;
     }
 }
 

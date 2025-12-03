@@ -14,4 +14,6 @@ public enum FoodType
 public class FoodItem : MonoBehaviour, Preparable
 {
     public FoodType foodType;
+    public GameObject preparedFood;
+    public float preparationTime = 2f;
 }
