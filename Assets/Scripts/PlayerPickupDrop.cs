@@ -7,6 +7,7 @@ public class PlayerPickupDrop : NetworkBehaviour
     [SerializeField] private Transform playerCameraTransform;
     [SerializeField] private Transform objectGrabPointTransform;
     [SerializeField] private LayerMask pickupLayerMask;
+    [HideInInspector] public CookingAppliance nearbyAppliance;
 
     private ObjectGrabbable objectGrabbable;
 
@@ -34,6 +35,35 @@ public class PlayerPickupDrop : NetworkBehaviour
                 heldFoodType = null;
             }
         }
+        // Prepare food
+        if (Keyboard.current[Key.C].wasPressedThisFrame)
+        {
+            if (objectGrabbable != null && nearbyAppliance != null)
+            {
+                GameObject raw = objectGrabbable.gameObject;
+                FoodItem foodItem = raw.GetComponent<FoodItem>();
+                if (foodItem == null) return;
+
+                if (nearbyAppliance.CanUseAppliance(foodItem.foodType))
+                {
+                    GameObject prepared = nearbyAppliance.PrepareFood(raw, objectGrabPointTransform);
+
+                    // Clear raw item
+                    objectGrabbable = null;
+                    heldItem = null;
+                    heldFoodType = null;
+
+                    // Get prepared item
+                    if (prepared != null)
+                    {
+                        objectGrabbable = prepared.GetComponent<ObjectGrabbable>();
+                        heldItem = prepared;
+                        heldFoodType = FoodType.Prepared;
+                    }
+                }
+            }
+        }
+
     }
 
     private void TryPickup()
@@ -60,9 +90,10 @@ public class PlayerPickupDrop : NetworkBehaviour
 
     public bool IsHoldingPreparableItem()
     {
-        if (heldItem.GetComponent<Preparable>() != null) return true;
+        if (heldItem == null || heldItem.Equals(null)) return false;
+        if (heldFoodType == FoodType.Prepared) return false;
 
-        return false;
+        return heldItem.GetComponent<Preparable>() != null;
     }
 }
 

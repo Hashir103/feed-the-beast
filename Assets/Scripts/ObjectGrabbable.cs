@@ -17,6 +17,7 @@ public class ObjectGrabbable : NetworkBehaviour
 
         // Store who wants to grab it
         objectGrabPointTransform = grabPoint;
+        objectRigidbody.isKinematic = true;
     }
 
     public void TryDrop()
@@ -24,6 +25,7 @@ public class ObjectGrabbable : NetworkBehaviour
 
         RequestDropServerRpc();
         objectGrabPointTransform = null;
+        objectRigidbody.isKinematic = false;
     }
 
     [ServerRpc(RequireOwnership = false)]
@@ -36,14 +38,25 @@ public class ObjectGrabbable : NetworkBehaviour
     [ServerRpc(RequireOwnership = false)]
     private void RequestDropServerRpc()
     {
-        // Server clears ownership and returns it to server
-        GetComponent<NetworkObject>().RemoveOwnership();
+        NetworkObject netObj = GetComponent<NetworkObject>();
+        if (netObj == null || !netObj.IsSpawned) 
+            return; 
+
+        netObj.RemoveOwnership();
     }
 
 
+    // ForceDrop item
+    public void ForceDrop()
+    {
+        objectGrabPointTransform = null;
+        if (objectRigidbody != null)
+            objectRigidbody.isKinematic = false;
+        transform.parent = null;
+    }
+
     private void FixedUpdate()
     {
-        // if (!IsOwner) return;
         if (objectGrabPointTransform != null)
         {
             float lerpSpeed = 10f;
