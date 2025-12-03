@@ -1,6 +1,7 @@
 using UnityEngine;
+using Unity.Netcode;
 
-public class CookingAppliance : MonoBehaviour
+public class CookingAppliance : NetworkBehaviour
 {
     public FoodType[] acceptableFoods;
 
@@ -15,6 +16,7 @@ public class CookingAppliance : MonoBehaviour
         player = other.GetComponent<PlayerPickupDrop>();
         if (player != null && CanUseAppliance(player.heldFoodType))
         {
+            other.GetComponent<PlayerPickupDrop>().nearbyAppliance = this;
             playerInRange = true;
             UpdatePrompt();
         }
@@ -26,6 +28,7 @@ public class CookingAppliance : MonoBehaviour
         if (player != null && other.GetComponent<PlayerPickupDrop>() == player)
         {
             playerInRange = false;
+            other.GetComponent<PlayerPickupDrop>().nearbyAppliance = null;
             player = null;
             UIManager.Instance.HidePrompt();
         }
@@ -52,5 +55,35 @@ public class CookingAppliance : MonoBehaviour
                 return true;
         }
         return false;
+    }
+
+    public GameObject PrepareFood(GameObject rawItem, Transform grabPoint)
+    {
+        FoodItem food = rawItem.GetComponent<FoodItem>();
+        if (food == null || food.preparedFood == null) 
+            return null;
+
+        // Force drop raw item before destroying
+        ObjectGrabbable rawGrab = rawItem.GetComponent<ObjectGrabbable>();
+        if (rawGrab != null)
+            rawGrab.ForceDrop();
+
+        // Destroy raw item
+        Destroy(rawItem);
+
+        // Instantiate prepared prefab
+        GameObject prepared = Instantiate(food.preparedFood, grabPoint.position, grabPoint.rotation);
+
+        // Spawn
+        NetworkObject netObj = prepared.GetComponent<NetworkObject>();
+        if (netObj != null && !netObj.IsSpawned)
+            netObj.Spawn();
+
+        // Grab new object
+        ObjectGrabbable grab = prepared.GetComponent<ObjectGrabbable>();
+        if (grab != null)
+            grab.TryGrab(grabPoint);
+
+        return prepared;
     }
 }

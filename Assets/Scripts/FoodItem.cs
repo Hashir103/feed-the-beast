@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using Unity.Netcode;
 
 public enum FoodType
 {
@@ -8,10 +8,12 @@ public enum FoodType
     Meat,
     Bread,
     Potato,
-    Lettuce
+    Lettuce,
+
+    Prepared
 }
 
-public class FoodItem : MonoBehaviour, Preparable
+public class FoodItem : NetworkBehaviour, Preparable
 {
     public FoodType foodType;
     public GameObject preparedFood;
