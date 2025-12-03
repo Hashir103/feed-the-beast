@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FoodItem : MonoBehaviour, IPreparable
+public class FoodItem : MonoBehaviour, Preparable
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

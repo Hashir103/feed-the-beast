@@ -3,7 +3,7 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager Instance;  // Singleton
+    public static UIManager Instance;
 
     public TextMeshProUGUI interactionPrompt;
 
@@ -12,7 +12,7 @@ public class UIManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);  // Optional if you load multiple scenes
+            DontDestroyOnLoad(gameObject);
         }
         else
         {

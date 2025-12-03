@@ -26,7 +26,7 @@ public class PlayerInteraction : MonoBehaviour
             return false;
         }
 
-        if (heldItem.GetComponent<IPreparable>() != null)
+        if (heldItem.GetComponent<Preparable>() != null)
         {
             Debug.Log("Held item is preparable.");
             return true;

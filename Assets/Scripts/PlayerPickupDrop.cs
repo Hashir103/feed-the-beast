@@ -27,12 +27,12 @@ public class PlayerPickupDrop : NetworkBehaviour
 
         if (Keyboard.current[Key.E].wasPressedThisFrame)
         {
-            // If not holding anything → try pick up
+            // If not holding anything, try pick up
             if (objectGrabbable == null)
             {
                 TryPickup();
             }
-            else // If holding → drop
+            else // If holding, drop
             {
                 objectGrabbable.TryDrop();
                 objectGrabbable = null;

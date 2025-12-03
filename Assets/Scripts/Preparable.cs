@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public interface IPreparable
+public interface Preparable
 {
     
 }
