@@ -90,6 +90,8 @@ public class ObjectGrabbable : NetworkBehaviour
         if (objectRigidbody != null)
         {
             objectRigidbody.linearVelocity = dropVelocity;
+            objectRigidbody.isKinematic = false;
+            objectRigidbody.useGravity = true;
         }
 
         netObj.RemoveOwnership();
@@ -135,11 +137,14 @@ public class ObjectGrabbable : NetworkBehaviour
 
     private void FixedUpdate()
     {
-        if (objectGrabPointTransform != null)
+        if (objectGrabPointTransform != null && objectRigidbody != null)
         {
             float lerpSpeed = 10f;
             Vector3 newPosition = Vector3.Lerp(transform.position, objectGrabPointTransform.position, Time.deltaTime * lerpSpeed);
+            Quaternion newRotation = Quaternion.Slerp(transform.rotation, objectGrabPointTransform.rotation, Time.deltaTime * lerpSpeed);
+
             objectRigidbody.MovePosition(newPosition);
+            objectRigidbody.MoveRotation(newRotation);
         }
     }
 }
