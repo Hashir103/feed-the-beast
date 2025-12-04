@@ -34,6 +34,8 @@ public class PlayerPickupDrop : NetworkBehaviour
 
                 heldItem = null;
                 heldFoodType = null;
+
+                UpdateInteractionPrompt();
             }
         }
         // Prepare food
@@ -55,6 +57,9 @@ public class PlayerPickupDrop : NetworkBehaviour
                         Debug.Log($"[PlayerPickupDrop] Sending RequestPrepareServerRpc. rawNetId={rawNet.NetworkObjectId}, applianceNetId={applianceNet.NetworkObjectId}");
                         RequestPrepareServerRpc(new NetworkObjectReference(applianceNet), new NetworkObjectReference(rawNet), objectGrabPointTransform.position, objectGrabPointTransform.rotation);
                         // Do not clear held item yet; wait for prepared receive
+
+                        // Hide prompt while cooking; will re-evaluate on receive
+                        UpdateInteractionPrompt();
                     }
                     else
                     {
@@ -92,6 +97,8 @@ public class PlayerPickupDrop : NetworkBehaviour
 
                 FoodItem food = grabbable.GetComponent<FoodItem>();
                 heldFoodType = food != null ? food.foodType : (FoodType?)null;
+
+                UpdateInteractionPrompt();
             }
         }
     }
@@ -168,6 +175,8 @@ public class PlayerPickupDrop : NetworkBehaviour
             objectGrabbable = grab;
             heldItem = prepared;
             heldFoodType = FoodType.Prepared;
+
+            UpdateInteractionPrompt();
         }
         else
         {
@@ -175,6 +184,24 @@ public class PlayerPickupDrop : NetworkBehaviour
         }
     }
     #pragma warning restore 0618
-    
+
+    public void UpdateInteractionPrompt(string overrideText = null)
+    {
+        if (!IsOwner) return; // each client controls its own UI only
+
+        bool canShow = nearbyAppliance != null
+                        && IsHoldingPreparableItem()
+                        && nearbyAppliance.CanUseAppliance(heldFoodType);
+
+        if (canShow)
+        {
+            string text = string.IsNullOrEmpty(overrideText) ? "Press 'C' to prepare" : overrideText;
+            UIManager.Instance.ShowPrompt(text);
+        }
+        else
+        {
+            UIManager.Instance.HidePrompt();
+        }
+    }
 }
 

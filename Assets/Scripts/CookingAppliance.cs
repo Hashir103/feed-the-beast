@@ -5,46 +5,28 @@ public class CookingAppliance : NetworkBehaviour
 {
     public FoodType[] acceptableFoods;
 
-    private bool playerInRange = false;
-    private PlayerPickupDrop player;
     [SerializeField] private string promptText = "Press 'C' to prepare";
     
 
     // Upon entering the appliance collider
     private void OnTriggerEnter(Collider other)
     {
-        player = other.GetComponent<PlayerPickupDrop>();
+        var player = other.GetComponent<PlayerPickupDrop>();
         if (player != null && CanUseAppliance(player.heldFoodType))
         {
-            other.GetComponent<PlayerPickupDrop>().nearbyAppliance = this;
-            playerInRange = true;
-            UpdatePrompt();
+            player.nearbyAppliance = this;
+            player.UpdateInteractionPrompt(promptText);
         }
     }
 
     // Upon exiting the appliance collider
     private void OnTriggerExit(Collider other)
     {
-        if (player != null && other.GetComponent<PlayerPickupDrop>() == player)
+        var player = other.GetComponent<PlayerPickupDrop>();
+        if (player != null && player.nearbyAppliance == this)
         {
-            playerInRange = false;
-            player = null;
-            other.GetComponent<PlayerPickupDrop>().nearbyAppliance = null;
-            UIManager.Instance.HidePrompt();
-        }
-    }
-
-    // Show or hide prompt to prepare
-    private void UpdatePrompt()
-    {
-        if (player == null) return;
-        if (playerInRange && player.IsHoldingPreparableItem())
-        {
-            UIManager.Instance.ShowPrompt(promptText);
-        }
-        else
-        {
-            UIManager.Instance.HidePrompt();
+            player.nearbyAppliance = null;
+            player.UpdateInteractionPrompt(promptText);
         }
     }
 
@@ -107,9 +89,8 @@ public class CookingAppliance : NetworkBehaviour
             netObj.Spawn();
         }
 
+        // Force-hide prompt after cooking; client will re-evaluate when state changes
         UIManager.Instance.HidePrompt();
-        // Re-evaluate prompt state after cooking; held item/state changed
-        UpdatePrompt();
         Debug.Log("[CookingAppliance] Cooking complete.");
 
         return prepared;
