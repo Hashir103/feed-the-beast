@@ -164,14 +164,6 @@ public class PlayerPickupDrop : NetworkBehaviour
             {
                 rb.isKinematic = true;
             }
-
-            // If NetworkTransform is server-authoritative, it may fight client motion; disable it client-side for held item
-            var netTransform = prepared.GetComponent<Unity.Netcode.Components.NetworkTransform>();
-            if (netTransform != null)
-            {
-                Debug.Log("[PlayerPickupDrop][ClientRpc] Disabling NetworkTransform to allow client-held movement.");
-                netTransform.enabled = false;
-            }
             grab.TryGrab(objectGrabPointTransform);
             objectGrabbable = grab;
             heldItem = prepared;

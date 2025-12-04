@@ -6,6 +6,11 @@ public class ObjectGrabbable : NetworkBehaviour
     private Rigidbody objectRigidbody;
     private Transform objectGrabPointTransform;
 
+    // Last known world pose when the client drops the object.
+    private Vector3 lastDropPosition;
+    private Quaternion lastDropRotation;
+    private Vector3 lastDropVelocity;
+
     private void Awake()
     {
         objectRigidbody = GetComponent<Rigidbody>();
@@ -18,22 +23,45 @@ public class ObjectGrabbable : NetworkBehaviour
 
         // Store who wants to grab it
         objectGrabPointTransform = grabPoint;
-        objectRigidbody.isKinematic = true;
+
         if (objectRigidbody != null)
         {
+            objectRigidbody.isKinematic = true;
             objectRigidbody.useGravity = false;
+        }
+
+        // Disable NetworkTransform while held so local motion isn't overridden
+        var netTransform = GetComponent<Unity.Netcode.Components.NetworkTransform>();
+        if (netTransform != null)
+        {
+            netTransform.enabled = false;
         }
     }
 
     public void TryDrop()
     {
         Debug.Log("[ObjectGrabbable] TryDrop requested by client for " + name);
-        RequestDropServerRpc();
-        objectGrabPointTransform = null;
-        objectRigidbody.isKinematic = false;
+        // Cache current pose so server can apply it authoritatively
         if (objectRigidbody != null)
         {
+            lastDropPosition = transform.position;
+            lastDropRotation = transform.rotation;
+            lastDropVelocity = objectRigidbody.linearVelocity;
+        }
+
+        RequestDropServerRpc(lastDropPosition, lastDropRotation, lastDropVelocity);
+        objectGrabPointTransform = null;
+        if (objectRigidbody != null)
+        {
+            objectRigidbody.isKinematic = false;
             objectRigidbody.useGravity = true;
+        }
+
+        // Re‑enable NetworkTransform so the dropped object syncs again
+        var netTransform = GetComponent<Unity.Netcode.Components.NetworkTransform>();
+        if (netTransform != null)
+        {
+            netTransform.enabled = true;
         }
     }
 
@@ -47,13 +75,22 @@ public class ObjectGrabbable : NetworkBehaviour
     }
 
     [ServerRpc(RequireOwnership = false)]
-    private void RequestDropServerRpc()
+    private void RequestDropServerRpc(Vector3 dropPosition, Quaternion dropRotation, Vector3 dropVelocity)
     {
         NetworkObject netObj = GetComponent<NetworkObject>();
         if (netObj == null || !netObj.IsSpawned) 
             return; 
 
-        Debug.Log("[ObjectGrabbable][ServerRpc] RemoveOwnership for " + name);
+        Debug.Log("[ObjectGrabbable][ServerRpc] Apply drop pose and RemoveOwnership for " + name);
+
+        // Apply the client's final pose on the server so everyone sees the drop from the hand
+        transform.position = dropPosition;
+        transform.rotation = dropRotation;
+        if (objectRigidbody != null)
+        {
+            objectRigidbody.linearVelocity = dropVelocity;
+        }
+
         netObj.RemoveOwnership();
     }
 
