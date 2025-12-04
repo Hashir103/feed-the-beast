@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class TagAssignment : NetworkBehaviour
 {
-    public static GameObject Player1;
-    public static GameObject Player2;
+    public static NetworkVariable<ulong> Player1Id = new NetworkVariable<ulong>(0);
+    public static NetworkVariable<ulong> Player2Id = new NetworkVariable<ulong>(0);
 
     public override void OnNetworkSpawn()
     {
@@ -21,14 +21,14 @@ public class TagAssignment : NetworkBehaviour
         }
     }
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     private void AssignTagServerRpc(string tag)
     {
         gameObject.tag = tag;
 
-        if (tag == "P1")
-            Player1 = gameObject;
-        else if (tag == "P2")
-            Player2 = gameObject;
+        ulong netId = GetComponent<NetworkObject>().NetworkObjectId;
+
+        if (tag == "P1") Player1Id.Value = netId;
+        else if (tag == "P2") Player2Id.Value = netId;
     }
 }

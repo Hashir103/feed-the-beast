@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 4248665792340990355}
   - component: {fileID: 849204778446590324}
   - component: {fileID: 2339981864087737990}
+  - component: {fileID: 4795645425003572731}
   m_Layer: 8
   m_Name: Creep1
   m_TagString: Untagged
@@ -81,6 +82,13 @@ MonoBehaviour:
   moveSpeed: 7
   angularSpeed: 720
   stoppingDistance: 0.5
+  masterFoodList:
+  - Food_Burger
+  - Food_Pizza
+  - Food_Taco
+  - Food_Sushi
+  - Food_Salad
+  randomizedFoodPreferences: []
 --- !u!195 &2481817298617435902
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -136,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 3043218812
+  GlobalObjectIdHash: 1319116857
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -171,6 +179,9 @@ MonoBehaviour:
   - rid: 7915298643696156830
   - rid: 7915298643696157529
   - rid: 3784813916027093065
+  - rid: 679323472041607240
+  - rid: 679323472041607241
+  - rid: 679323472041607242
   m_OriginalGraph: {fileID: 5958268989243667538, guid: 7a9796879cffd444e8ee623b48104bfa, type: 2}
   m_IsInitialised: 0
   m_IsStarted: 0
@@ -178,6 +189,30 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
+    - rid: 679323472041607240
+      type: {class: 'BlackboardVariable`1[[System.Boolean, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 13833426055851868574
+          m_Value1: 5298830873744939220
+        Name: Bowl1Full
+        m_Value: 1
+    - rid: 679323472041607241
+      type: {class: 'BlackboardVariable`1[[System.Boolean, mscorlib]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 257960502197807558
+          m_Value1: 1026337290102054852
+        Name: Bowl2Full
+        m_Value: 1
+    - rid: 679323472041607242
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 12414039287644872010
+          m_Value1: 1947156462774778962
+        Name: Player2
+        m_Value: {fileID: 0}
     - rid: 3784813916027093065
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -185,7 +220,7 @@ MonoBehaviour:
           m_Value0: 12564427052621095471
           m_Value1: 14350241576148898191
         Name: Bowl3
-        m_Value: {fileID: 0}
+        m_Value: {fileID: 6008706803330488911, guid: 4b8537c44658fa24eb8a223beb90b963, type: 3}
     - rid: 7915298641457709314
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -209,7 +244,7 @@ MonoBehaviour:
           m_Value0: 10405061417547380001
           m_Value1: 9559820432282772063
         Name: Bowl2
-        m_Value: {fileID: 0}
+        m_Value: {fileID: 7258173944697844202, guid: 95c98c89345822c4e80271a6c629a1bf, type: 3}
     - rid: 7915298641457710041
       type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -217,7 +252,7 @@ MonoBehaviour:
           m_Value0: 5044631444228721592
           m_Value1: 9568920582065620496
         Name: Bowl1
-        m_Value: {fileID: 0}
+        m_Value: {fileID: 9064419893258666394, guid: 250c046a4fbf964429fe8ca9172f1067, type: 3}
     - rid: 7915298643696156830
       type: {class: 'BlackboardVariable`1[[UnityEngine.AI.NavMeshAgent, UnityEngine.AIModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
@@ -232,8 +267,8 @@ MonoBehaviour:
         GUID:
           m_Value0: 17591243677775012242
           m_Value1: 4226074029078939907
-        Name: Player
-        m_Value: {fileID: 5236599607087086686, guid: 23756fa6a24d0e94da7eaf2de8f13013, type: 3}
+        Name: Player1
+        m_Value: {fileID: 0}
 --- !u!114 &4248665792340990355
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,6 +352,20 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   TransitionStateInfoList: []
   m_Animator: {fileID: 849204778446590324}
+--- !u!114 &4795645425003572731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884023606893373166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d287cba1a6a7e3a4fba6dc241fa0518c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BlackboardUpdater
+  ShowTopMostFoldoutHeaderGroup: 1
+  agent: {fileID: 3109512874323290109}
 --- !u!1 &5333153055872461052
 GameObject:
   m_ObjectHideFlags: 0

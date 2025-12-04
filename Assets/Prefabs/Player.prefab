@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 4396497587055654740}
   - component: {fileID: 190933519844676217}
   - component: {fileID: 5034883640726192834}
-  - component: {fileID: 5039686467454004115}
+  - component: {fileID: 1731295749037731415}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -390,7 +390,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TagAssignment
   ShowTopMostFoldoutHeaderGroup: 1
---- !u!114 &5039686467454004115
+  blackboardUpdater: {fileID: 4795645425003572731, guid: 933e30c2f38c4574f9f275e48400c5ab, type: 3}
+--- !u!114 &1731295749037731415
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -399,10 +400,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5236599607087086686}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c8d087bfb60d12459fa44d66facd75d, type: 3}
+  m_Script: {fileID: 11500000, guid: 63e693eec56ae344c941dc5df7c11858, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TagAssignment
+  m_EditorClassIdentifier: '::'
   ShowTopMostFoldoutHeaderGroup: 1
+  agent: {fileID: 3109512874323290109, guid: 933e30c2f38c4574f9f275e48400c5ab, type: 3}
+  p1: Player1
+  p2: Player2
 --- !u!1001 &1364701181709721980
 PrefabInstance:
   m_ObjectHideFlags: 0
