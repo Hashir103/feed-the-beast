@@ -97,5 +97,7 @@ public class PlayerPickupDrop : NetworkBehaviour
 
         return heldItem.GetComponent<Preparable>() != null;
     }
+
+    
 }
 

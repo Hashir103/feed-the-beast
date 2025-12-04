@@ -42,6 +42,10 @@ public class CookingAppliance : NetworkBehaviour
         {
             UIManager.Instance.ShowPrompt(promptText);
         }
+        else
+        {
+            UIManager.Instance.HidePrompt();
+        }
     }
 
     // Check if held food is valid for the appliance
@@ -82,6 +86,9 @@ public class CookingAppliance : NetworkBehaviour
         ObjectGrabbable grab = prepared.GetComponent<ObjectGrabbable>();
         if (grab != null)
             grab.TryGrab(grabPoint);
+
+        // Hide the prompt after preparing
+        UIManager.Instance.HidePrompt();
 
         return prepared;
     }
