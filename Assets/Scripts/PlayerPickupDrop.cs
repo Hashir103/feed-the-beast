@@ -17,8 +17,9 @@ public class PlayerPickupDrop : NetworkBehaviour
 
     private void Update()
     {
-        if (!IsOwner) return; // Only the local player handles input
+        if (!IsOwner) return; 
 
+        // Pickup / drop food
         if (Keyboard.current[Key.E].wasPressedThisFrame)
         {
             // If not holding anything, try pick up
@@ -88,6 +89,7 @@ public class PlayerPickupDrop : NetworkBehaviour
         }
     }
 
+    // Check if player can cook the item being held
     public bool IsHoldingPreparableItem()
     {
         if (heldItem == null || heldItem.Equals(null)) return false;

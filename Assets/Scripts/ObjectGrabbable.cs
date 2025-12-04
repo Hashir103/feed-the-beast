@@ -22,7 +22,6 @@ public class ObjectGrabbable : NetworkBehaviour
 
     public void TryDrop()
     {
-
         RequestDropServerRpc();
         objectGrabPointTransform = null;
         objectRigidbody.isKinematic = false;
