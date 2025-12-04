@@ -390,7 +390,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TagAssignment
   ShowTopMostFoldoutHeaderGroup: 1
-  agent: {fileID: 3109512874323290109, guid: 933e30c2f38c4574f9f275e48400c5ab, type: 3}
+  blackboardUpdater: {fileID: 4795645425003572731, guid: 933e30c2f38c4574f9f275e48400c5ab, type: 3}
 --- !u!114 &1731295749037731415
 MonoBehaviour:
   m_ObjectHideFlags: 0

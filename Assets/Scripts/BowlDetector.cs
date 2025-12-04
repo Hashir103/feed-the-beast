@@ -4,9 +4,10 @@ using Unity.Netcode;
 
 public class BowlDetector : NetworkBehaviour
 {
-    [SerializeField] private BehaviorGraphAgent agent;
+    // [SerializeField] private BehaviorGraphAgent agent;
     [SerializeField] private string bowlVariableName = "Bowl";
     private BowlOwner bowlOwner;
+    private BehaviorGraphAgent agent;
 
     private void Awake()
     {
@@ -18,6 +19,8 @@ public class BowlDetector : NetworkBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        agent = GameObject.Find("Creep1").GetComponent<BehaviorGraphAgent>();
+
         FoodItem food = other.GetComponent<FoodItem>();
         if (food == null) return;
 
@@ -32,10 +35,13 @@ public class BowlDetector : NetworkBehaviour
             owner = null;
         }
 
-
-        Debug.Log($"Food in {gameObject.name} (owned by {owner}): {foodName}");
-
-        // agent.SetVariableValue(bowlVariableName + "Full", true);
-        // agent.SetVariableValue(bowlVariableName + "FoodName", foodName);
+        if (gameObject.name == "Bowl1")
+        {
+            agent.SetVariableValue<bool>("Bowl1Full", true);
+        }
+        else if (gameObject.name == "Bowl2")
+        {
+            agent.SetVariableValue<bool>("Bowl2Full", true);
+        }
     }
 }
