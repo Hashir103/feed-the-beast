@@ -108,6 +108,8 @@ public class CookingAppliance : NetworkBehaviour
         }
 
         UIManager.Instance.HidePrompt();
+        // Re-evaluate prompt state after cooking; held item/state changed
+        UpdatePrompt();
         Debug.Log("[CookingAppliance] Cooking complete.");
 
         return prepared;

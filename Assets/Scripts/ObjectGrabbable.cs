@@ -46,7 +46,8 @@ public class ObjectGrabbable : NetworkBehaviour
         {
             lastDropPosition = transform.position;
             lastDropRotation = transform.rotation;
-            lastDropVelocity = objectRigidbody.linearVelocity;
+            // Start from rest; let gravity drive the fall
+            lastDropVelocity = Vector3.zero;
         }
 
         RequestDropServerRpc(lastDropPosition, lastDropRotation, lastDropVelocity);
