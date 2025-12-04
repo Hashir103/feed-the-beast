@@ -260,5 +260,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FoodItem
   ShowTopMostFoldoutHeaderGroup: 1
   foodType: 1
+  preparable: 1
   preparedFood: {fileID: 6144155658186244061, guid: 2b7956a0df68d0044a796667c016aa01, type: 3}
   preparationTime: 2

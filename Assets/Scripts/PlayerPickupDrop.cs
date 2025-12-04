@@ -93,7 +93,7 @@ public class PlayerPickupDrop : NetworkBehaviour
         if (heldItem == null || heldItem.Equals(null)) return false;
         if (heldFoodType == FoodType.Prepared) return false;
 
-        return heldItem.GetComponent<Preparable>() != null;
+        return heldItem.GetComponent<FoodItem>().preparable;
     }
 }
 

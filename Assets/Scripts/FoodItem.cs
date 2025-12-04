@@ -13,9 +13,10 @@ public enum FoodType
     Prepared
 }
 
-public class FoodItem : NetworkBehaviour, Preparable
+public class FoodItem : NetworkBehaviour
 {
     public FoodType foodType;
+    public bool preparable;
     public GameObject preparedFood;
     public float preparationTime = 2f;
 }
