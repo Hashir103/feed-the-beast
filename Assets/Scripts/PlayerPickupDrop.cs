@@ -17,7 +17,7 @@ public class PlayerPickupDrop : NetworkBehaviour
 
     private void Update()
     {
-        if (!IsOwner) return; // Only the local player handles input
+        if (!IsOwner) return; 
 
         // Pickup / drop food
         if (Keyboard.current[Key.E].wasPressedThisFrame)

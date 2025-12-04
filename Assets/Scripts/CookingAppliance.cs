@@ -28,8 +28,8 @@ public class CookingAppliance : NetworkBehaviour
         if (player != null && other.GetComponent<PlayerPickupDrop>() == player)
         {
             playerInRange = false;
-            other.GetComponent<PlayerPickupDrop>().nearbyAppliance = null;
             player = null;
+            other.GetComponent<PlayerPickupDrop>().nearbyAppliance = null;
             UIManager.Instance.HidePrompt();
         }
     }
@@ -48,7 +48,6 @@ public class CookingAppliance : NetworkBehaviour
     public bool CanUseAppliance(FoodType? held)
     {
         if (held == null) return false;
-
         foreach (var food in acceptableFoods)
         {
             if (food == held)
