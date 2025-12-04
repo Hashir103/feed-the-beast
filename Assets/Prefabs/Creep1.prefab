@@ -81,6 +81,14 @@ MonoBehaviour:
   moveSpeed: 7
   angularSpeed: 720
   stoppingDistance: 0.5
+  masterFoodList:
+  - Food_Burger
+  - Food_Cooked Rice
+  - Food_Cooked Steak
+  - Food_French Fries
+  - Food_Pizza
+  - Food_Salad
+  randomizedFoodPreferences: []
 --- !u!195 &2481817298617435902
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -136,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 3043218812
+  GlobalObjectIdHash: 1319116857
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -232,8 +240,8 @@ MonoBehaviour:
         GUID:
           m_Value0: 17591243677775012242
           m_Value1: 4226074029078939907
-        Name: Player
-        m_Value: {fileID: 5236599607087086686, guid: 23756fa6a24d0e94da7eaf2de8f13013, type: 3}
+        Name: Player1
+        m_Value: {fileID: 0}
 --- !u!114 &4248665792340990355
 MonoBehaviour:
   m_ObjectHideFlags: 0
