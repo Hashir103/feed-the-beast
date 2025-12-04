@@ -71,7 +71,7 @@ public class CookingAppliance : NetworkBehaviour
         // Destroy raw item
         Destroy(rawItem);
 
-        // Instantiate prepared prefab
+        // Get cooked food
         GameObject prepared = Instantiate(food.preparedFood, grabPoint.position, grabPoint.rotation);
 
         // Spawn
@@ -79,7 +79,7 @@ public class CookingAppliance : NetworkBehaviour
         if (netObj != null && !netObj.IsSpawned)
             netObj.Spawn();
 
-        // Grab new object
+        // Grab new cooked food object
         ObjectGrabbable grab = prepared.GetComponent<ObjectGrabbable>();
         if (grab != null)
             grab.TryGrab(grabPoint);

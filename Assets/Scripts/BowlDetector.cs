@@ -22,7 +22,16 @@ public class BowlDetector : NetworkBehaviour
         if (food == null) return;
 
         string foodName = food.gameObject.name;
-        string owner = bowlOwner;
+        string owner;
+        if (bowlOwner != null)
+        {
+            owner = bowlOwner.OwnerTag;
+        }
+        else
+        {
+            owner = null;
+        }
+
 
         Debug.Log($"Food in {gameObject.name} (owned by {owner}): {foodName}");
 
