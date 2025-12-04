@@ -42,6 +42,10 @@ public class CookingAppliance : NetworkBehaviour
         {
             UIManager.Instance.ShowPrompt(promptText);
         }
+        else
+        {
+            UIManager.Instance.HidePrompt();
+        }
     }
 
     // Check if held food is valid for the appliance
@@ -56,33 +60,59 @@ public class CookingAppliance : NetworkBehaviour
         return false;
     }
 
-    public GameObject PrepareFood(GameObject rawItem, Transform grabPoint)
+    public GameObject PrepareFood(GameObject rawItem, Vector3 spawnPosition, Quaternion spawnRotation)
     {
+        Debug.Log("[CookingAppliance] PrepareFood called on " + name + (IsServer ? " (server)" : " (not server)"));
         FoodItem food = rawItem.GetComponent<FoodItem>();
         if (food == null || food.preparedFood == null) 
+        {
+            Debug.LogWarning("[CookingAppliance] Invalid raw item or missing prepared prefab.");
             return null;
+        }
 
-        // Force drop raw item before destroying
+        // Server-only execution; clients should request via player's ServerRpc
+        if (!IsServer) { Debug.LogWarning("[CookingAppliance] PrepareFood must be called on server."); return null; }
+
         ObjectGrabbable rawGrab = rawItem.GetComponent<ObjectGrabbable>();
         if (rawGrab != null)
+        {
+            Debug.Log("[CookingAppliance] Force dropping raw item.");
             rawGrab.ForceDrop();
+        }
 
-        // Destroy raw item
+        var rawNetObj = rawItem.GetComponent<NetworkObject>();
+        if (rawNetObj != null && rawNetObj.IsSpawned)
+        {
+            Debug.Log("[CookingAppliance] Despawning raw NetworkObject.");
+            rawNetObj.Despawn(true);
+        }
+        Debug.Log("[CookingAppliance] Destroying raw item GameObject.");
         Destroy(rawItem);
 
-        // Get cooked food
-        GameObject prepared = Instantiate(food.preparedFood, grabPoint.position, grabPoint.rotation);
+        Debug.Log($"[CookingAppliance] Instantiating prepared food at position={spawnPosition} rot={spawnRotation.eulerAngles}");
+        GameObject prepared = Instantiate(food.preparedFood, spawnPosition, spawnRotation);
 
-        // Spawn
+        // Preempt physics drop: start kinematic until client grabs
+        var rb = prepared.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.isKinematic = true;
+            rb.useGravity = false;
+        }
+
         NetworkObject netObj = prepared.GetComponent<NetworkObject>();
         if (netObj != null && !netObj.IsSpawned)
+        {
+            Debug.Log("[CookingAppliance] Spawning prepared NetworkObject.");
             netObj.Spawn();
+        }
 
-        // Grab new cooked food object
-        ObjectGrabbable grab = prepared.GetComponent<ObjectGrabbable>();
-        if (grab != null)
-            grab.TryGrab(grabPoint);
+        UIManager.Instance.HidePrompt();
+        // Re-evaluate prompt state after cooking; held item/state changed
+        UpdatePrompt();
+        Debug.Log("[CookingAppliance] Cooking complete.");
 
         return prepared;
     }
+
 }
