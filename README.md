@@ -113,36 +113,4 @@ The game will take place in a dark and grimy kitchen or storage house. There wil
 - As can be seen in the video, the monster will use the navmesh to chase down the player when it is trying to attack them, making it seem more calculating and intimidating.
 
 ### [Pathfinding and Decision Making Demo](https://youtu.be/wCuLaDohHQ0)
-<<<<<<< HEAD
 
-# Assignment 4 - Networking
-
-## Setup Instructions
-- Download the feed-the-beast/assignment4 repository
-- Open the repository on Unity
-- Create a build of the game for Windows (CTRL + SHIFT + B)
-- After the game is built, open the game application and start the game from the Unity Editor
-- Press "HOST" on one game instance to spawn Player 1
-- Press "JOIN" on the other game instance to spawn Player 2
-
-## Network Demo
-[Demo Video](https://youtu.be/_1Gei5IcjG8/)
-
-## Features
-- Players can cook different items while holding them next to valid appliances and pressing "C"
-    - Ground beef + stove = Burger
-    - Steak + stove = Cooked meat
-    - Rice + cutting board = Onigiri
-    - Lettuce + cutting board = Salad
-    - Potato + fryer = French fries
-    - Flatbread + oven = Pizza
-
-## Changes from proposal
-- Players will only be bitten once by the monster, rather than 3 times. The game will end once a player is bitten/attacked.
-- Players can connect to the game locally on the same device, but do not view the game in a split-screen format.
-- The monster will eat both meals, rather than sniff them. After eating both meals, the monster will attack the player the provided the least enjoyable meal (based on a randomized list of food preferences).
-- The game does not include audio cues and randomized food quality.
-- The timer is slightly modified, where the monster will immediately begin moving to the kitchen after waiting in the hallway for 8-10 seconds.
-- No custom-made assets were implemented
-=======
->>>>>>> parent of 679329b (Merge pull request #32 from Hashir103/assignment4)
