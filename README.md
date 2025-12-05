@@ -126,6 +126,7 @@ The game will take place in a dark and grimy kitchen or storage house. There wil
 - Press "JOIN" on the other game instance to spawn Player 2
 
 ## Network Demo
+[Demo Video](https://youtu.be/_1Gei5IcjG8/)
 
 ## Features
 - Players can cook different items while holding them next to valid appliances and pressing "C"
