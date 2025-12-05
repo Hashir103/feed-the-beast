@@ -116,7 +116,7 @@ The game will take place in a dark and grimy kitchen or storage house. There wil
 ### [Pathfinding and Decision Making Demo](https://youtu.be/wCuLaDohHQ0)
 
 # Assignment 4 - Networking
-
+## [Network Demo](https://www.youtube.com/watch?v=_1Gei5IcjG8)
 ## Setup Instructions
 - Download the feed-the-beast/assignment4 repository
 - Open the repository on Unity
@@ -125,8 +125,6 @@ The game will take place in a dark and grimy kitchen or storage house. There wil
 - Press "HOST" on one game instance to spawn Player 1
 - Press "JOIN" on the other game instance to spawn Player 2
 - Control the different players on the game instances by pausing/resuming gameplay for each specific player
-
-##[Network Demo](https://www.youtube.com/watch?v=_1Gei5IcjG8)
 
 ## Features
 - Players can cook different items while holding them next to valid appliances and pressing "C"
