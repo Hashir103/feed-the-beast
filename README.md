@@ -63,8 +63,7 @@ The game will take place in a dark and grimy kitchen or storage house. There wil
 - W A S D (movement)
 - Mouse (look around)
 - Space (jump) 
-- E (pick up/drop ingredient)
-- C (prepare meal)
+- E (pick up/drop ingredient), to be implemented
 
 ## Project Setup
 - Unity
@@ -114,6 +113,7 @@ The game will take place in a dark and grimy kitchen or storage house. There wil
 - As can be seen in the video, the monster will use the navmesh to chase down the player when it is trying to attack them, making it seem more calculating and intimidating.
 
 ### [Pathfinding and Decision Making Demo](https://youtu.be/wCuLaDohHQ0)
+<<<<<<< HEAD
 
 # Assignment 4 - Networking
 
@@ -144,3 +144,5 @@ The game will take place in a dark and grimy kitchen or storage house. There wil
 - The game does not include audio cues and randomized food quality.
 - The timer is slightly modified, where the monster will immediately begin moving to the kitchen after waiting in the hallway for 8-10 seconds.
 - No custom-made assets were implemented
+=======
+>>>>>>> parent of 679329b (Merge pull request #32 from Hashir103/assignment4)

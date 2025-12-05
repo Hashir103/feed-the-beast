@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Unity.Netcode;
 
-public class PlayerController : NetworkBehaviour
+public class PlayerController : MonoBehaviour
 {
     private CharacterController _characterController;
     [Tooltip("When false the PlayerController will ignore input (useful for menus)")]
@@ -14,6 +13,7 @@ public class PlayerController : NetworkBehaviour
     private float _rotationY;
     private float _rotationX;
     private float _verticalVelocity;
+
     public Transform CameraTransform;
     public Vector3 CameraOffset = new Vector3(0f, 1.6f, 0f);
     public float LookSensitivity = 1f;
@@ -32,10 +32,10 @@ public class PlayerController : NetworkBehaviour
     {
         // get camera and character
         _characterController = GetComponent<CharacterController>();
-        // if (CameraTransform == null && Camera.main != null)
-        // {
-        //     CameraTransform = Camera.main.transform;
-        // }
+        if (CameraTransform == null && Camera.main != null)
+        {
+            CameraTransform = Camera.main.transform;
+        }
 
         // initialize rotation
         _rotationY = transform.localEulerAngles.y;
@@ -51,20 +51,6 @@ public class PlayerController : NetworkBehaviour
 
             CameraTransform.localPosition = CameraOffset;
         }
-    }
-
-    public override void OnNetworkSpawn()
-    {
-        if (!IsOwner)
-        {
-            if (CameraTransform != null)
-                CameraTransform.GetComponent<Camera>().enabled = false;
-
-            return;
-        }
-
-        if (CameraTransform != null)
-            CameraTransform.GetComponent<Camera>().enabled = true;
     }
 
     public void Move(Vector2 movementVector)
@@ -115,7 +101,6 @@ public class PlayerController : NetworkBehaviour
     void Update()
     {
         if (!AcceptInput) return;
-        if (!IsOwner) return;
         var mouse = Mouse.current;
         var keyboard = Keyboard.current;
 
